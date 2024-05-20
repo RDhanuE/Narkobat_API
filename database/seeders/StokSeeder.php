@@ -15,28 +15,28 @@ class StokSeeder extends Seeder
     {
         DB::table('stok')->insert([
             [
-                'id obat' => 1, 
-                'id apotik' => 1,
+                'id_obat' => 1, 
+                'id_apotik' => 1,
                 'stok' => 10
             ],
             [
-                'id obat' => 1, 
-                'id apotik' => 2,
+                'id_obat' => 1, 
+                'id_apotik' => 2,
                 'stok' => 15
             ],
             [
-                'id obat' => 2, 
-                'id apotik' => 2,
+                'id_obat' => 2, 
+                'id_apotik' => 2,
                 'stok' => 20
             ],
             [
-                'id obat' => 2, 
-                'id apotik' => 3,
+                'id_obat' => 2, 
+                'id_apotik' => 3,
                 'stok' => 25
             ],
             [
-                'id obat' => 3, 
-                'id apotik' => 1,
+                'id_obat' => 3, 
+                'id_apotik' => 1,
                 'stok' => 30
             ],
         ]);

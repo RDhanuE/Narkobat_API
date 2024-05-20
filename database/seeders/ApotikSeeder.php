@@ -14,31 +14,31 @@ class ApotikSeeder extends Seeder
     {
         DB::table('apotik')->insert([
             [
-                'nama apotik' => 'Apotek K-24 Jogja',
+                'nama_apotik' => 'Apotek K-24 Jogja',
                 'alamat' => 'Jl. Malioboro No.1, Yogyakarta',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama apotik' => 'Apotek Kimia Farma Jogja',
+                'nama_apotik' => 'Apotek Kimia Farma Jogja',
                 'alamat' => 'Jl. Jend. Sudirman No.15, Yogyakarta',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama apotik' => 'Apotek Guardian Jogja',
+                'nama_apotik' => 'Apotek Guardian Jogja',
                 'alamat' => 'Jl. Margo Utomo No.8, Yogyakarta',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama apotik' => 'Apotek Roxy Jogja',
+                'nama_apotik' => 'Apotek Roxy Jogja',
                 'alamat' => 'Jl. Solo No.7, Yogyakarta',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama apotik' => 'Apotek Century Jogja',
+                'nama_apotik' => 'Apotek Century Jogja',
                 'alamat' => 'Jl. Gejayan No.10, Yogyakarta',
                 'created_at' => now(),
                 'updated_at' => now(),

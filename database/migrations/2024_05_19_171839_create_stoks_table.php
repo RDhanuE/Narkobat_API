@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('stok', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("id obat");
-            $table->unsignedBigInteger("id apotik");
-            $table->foreign("id obat")->references("id")->on("obat");
-            $table->foreign("id apotik")->references("id")->on("apotik");
+            $table->unsignedBigInteger("id_obat");
+            $table->unsignedBigInteger("id_apotik");
+            $table->foreign("id_obat")->references("id")->on("obat");
+            $table->foreign("id_apotik")->references("id")->on("apotik");
             $table->integer("stok");
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stoks');
+        Schema::dropIfExists('stok');
     }
 };

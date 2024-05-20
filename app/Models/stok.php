@@ -9,7 +9,7 @@ class stok extends Model
 {
     use HasFactory;
     protected $table = 'stok';
-    protected $fillable = ['id obat', 'id apotik', 'stok'];
+    protected $fillable = ['id_obat', 'id_apotik', 'stok'];
 
     public function obat(){
         return $this->hasMany(obat::class);

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
-use App\Models\obat;
-use App\Http\Requests\StoreobatRequest;
-use App\Http\Requests\UpdateobatRequest;
+use App\Http\Controllers\Controller;
+use App\Models\stok;
+use App\Http\Requests\StorestokRequest;
+use App\Http\Requests\UpdatestokRequest;
 
-class ObatController extends Controller
+class StokController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class ObatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreobatRequest $request)
+    public function store(StorestokRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class ObatController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(obat $obat)
+    public function show(stok $stok)
     {
         //
     }
@@ -43,7 +44,7 @@ class ObatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(obat $obat)
+    public function edit(stok $stok)
     {
         //
     }
@@ -51,7 +52,7 @@ class ObatController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateobatRequest $request, obat $obat)
+    public function update(UpdatestokRequest $request, stok $stok)
     {
         //
     }
@@ -59,7 +60,7 @@ class ObatController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(obat $obat)
+    public function destroy(stok $stok)
     {
         //
     }

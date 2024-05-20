@@ -9,5 +9,5 @@ class apotik extends Model
 {
     use HasFactory;
     protected $table = 'apotik';
-    protected $fillable = ['nama apotik', 'alamat'];
+    protected $fillable = ['nama_apotik', 'alamat'];
 }
