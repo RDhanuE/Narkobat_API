@@ -16,12 +16,8 @@ class ApotikController extends Controller
     public function index(Request $request)
     {
         $apotik = apotik::all();
-        // if($request->query('nama') != null){
-        //     $apotik = apotik::where('nama_apotik', $request->query('nama')->first());
-        // }
         if ($request->has('name')) {
             $name = $request->query('name');
-            // Search for apotiks by name
             $apotik = Apotik::where('nama_apotik', 'like', '%' . $name . '%')->get();
         }
         return response()->json($apotik);

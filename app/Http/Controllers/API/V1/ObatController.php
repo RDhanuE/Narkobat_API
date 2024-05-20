@@ -16,7 +16,7 @@ class ObatController extends Controller
     public function index(Request $request)
     {
         // Check if there is a 'q' query parameter in the request
-        $query = $request->query('q');
+        $query = $request->query('name');
 
         if ($query) {
         // If there is a 'q' parameter, perform the search

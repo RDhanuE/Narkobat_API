@@ -12,10 +12,10 @@ class stok extends Model
     protected $fillable = ['id_obat', 'id_apotik', 'stok'];
 
     public function obat(){
-        return $this->hasMany(obat::class);
+        return $this->belongsTo(obat::class, 'id_obat');
     }
 
     public function apotik(){
-        return $this->hasMany(apotik::class);
+        return $this->belongsTo(apotik::class, 'id_apotik');
     }
 }
