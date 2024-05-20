@@ -15,7 +15,7 @@ Route::controller(ObatController::class)->group(function() {
     Route::get('/drugs/{id}', 'show');
     Route::post('/drugs', 'store'); // Need admin auth
     Route::post('/drugs/{id}', 'update'); // Need admin auth
-    Route::delete('drugs', 'destroy'); // Need admin auth
+    Route::delete('/drugs/{id}', 'destroy'); // Need admin auth
 });
 
 Route::controller(ApotikController::class)->group(function() {

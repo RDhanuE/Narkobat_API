@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("id_obat");
             $table->unsignedBigInteger("id_apotik");
-            $table->foreign("id_obat")->references("id")->on("obat");
-            $table->foreign("id_apotik")->references("id")->on("apotik");
+            $table->foreign("id_obat")->references("id")->on("obat")->onDelete('cascade');
+            $table->foreign("id_apotik")->references("id")->on("apotik")->onDelete('cascade');
             $table->integer("stok");
             $table->timestamps();
         });

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("nama_obat");
             $table->string("jenis_obat");
             $table->string("penyakit");
-            $table->integer("harga");
+            $table->integer("harga")->default(0);
             $table->timestamps();
         });
     }
