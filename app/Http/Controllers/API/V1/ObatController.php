@@ -20,7 +20,7 @@ class ObatController extends Controller
 
         if ($query) {
         // If there is a 'q' parameter, perform the search
-            $obats = Obat::where('nama obat', 'like', "%{$query}%")->get();
+            $obats = Obat::where('nama_obat', 'like', "%{$query}%")->get();
         } else {
         // If there is no 'q' parameter, return all drugs
             $obats = Obat::all();

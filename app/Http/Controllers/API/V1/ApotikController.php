@@ -40,7 +40,12 @@ class ApotikController extends Controller
         $apotik->nama_apotik = $request->nama_apotik;
         $apotik->alamat = $request->alamat;
         $apotik->save();
-        
+        $plainTextToken = $apotik->createToken('apitoken')->plainTextToken;
+        $tokenParts = explode('|', $plainTextToken);
+        $token = $tokenParts[1] ?? $plainTextToken;
+        $apotik->token = $token;
+        $apotik->save();
+
         return response()->json($apotik);
     }
 

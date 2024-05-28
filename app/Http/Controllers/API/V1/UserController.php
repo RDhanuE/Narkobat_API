@@ -56,6 +56,6 @@ class UserController extends Controller
         $user->roles = 'apoteker';
         $user->save();
 
-        return response()->json(['message' => 'User connected to Apotik successfully'], 200);
+        return response()->json(['message' => 'User connected to Apotik successfully', 'apotik' =>  $request->attributes->get('apotik')], 200);
     }
 }
