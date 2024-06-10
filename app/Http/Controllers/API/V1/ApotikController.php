@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\apotik;
 use App\Http\Requests\StoreapotikRequest;
 use App\Http\Requests\UpdateapotikRequest;
+use App\Http\Resources\ApotikResource;
 use Illuminate\Http\Request;
 
 class ApotikController extends Controller
@@ -20,7 +21,7 @@ class ApotikController extends Controller
             $name = $request->query('name');
             $apotik = Apotik::where('nama_apotik', 'like', '%' . $name . '%')->get();
         }
-        return response()->json($apotik);
+        return ApotikResource::collection($apotik);
     }
 
     /**
@@ -55,7 +56,7 @@ class ApotikController extends Controller
     public function show($id)
     {
         $apotik = apotik::find($id);
-        return response()->json($apotik);
+        return new ApotikResource($apotik);
     }
 
     /**

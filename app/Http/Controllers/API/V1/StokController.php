@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorestokRequest;
 use App\Http\Requests\UpdatestokRequest;
+use App\Http\Resources\StockResource;
 use App\Models\stok;
 use App\Models\apotik;
 use App\Models\obat;
@@ -19,16 +20,16 @@ class StokController extends Controller
     {
         $stok = Stok::with(['obat', 'apotik'])->get();
 
-        $data = $stok->map(function ($stok) {
-            return [
-                'id' => $stok->id,
-                'stok' => $stok->stok,
-                'obat_name' => $stok->obat->nama_obat,  
-                'apotik_name' => $stok->apotik->nama_apotik,
-            ];
-        });
+        // $data = $stok->map(function ($stok) {
+        //     return [
+        //         'id' => $stok->id,
+        //         'stok' => $stok->stok,
+        //         'obat_name' => $stok->obat->nama_obat,  
+        //         'apotik_name' => $stok->apotik->nama_apotik,
+        //     ];
+        // });
 
-        return response()->json($data);
+        return StockResource::collection($stok);
     }
 
     /**
@@ -47,15 +48,17 @@ class StokController extends Controller
         $stok = new stok();
         
         $obat = $request->nama_obat;
-        $obat = Obat::where('nama obat', 'like', "%{$obat}%")->get();
+        $obat = Obat::where('nama_obat', 'like', "%" .$obat. "%")->first();
         $stok -> id_obat = $obat -> id;
 
         $apotik = $request->nama_apotik;
-        $apotik = Apotik::where('nama_apotik', 'like', '%' . $apotik . '%')->get();
-        $stok -> id_apotik - $apotik -> id;
+        $apotik = Apotik::where('nama_apotik', 'like', '%' . $apotik . '%')->first();
+        $stok -> id_apotik = $apotik -> id;
 
-        $stok -> stok;
+        $stok -> stok = $request->stok;
         $stok -> save();
+
+        return response()->json($stok);
     }
 
     /**
@@ -65,13 +68,13 @@ class StokController extends Controller
     {
         $stok = Stok::with(['obat', 'apotik'])->find($id);
 
-        $data = [
-                'id' => $stok->id,
-                'stok' => $stok->stok,
-                'obat_name' => $stok->obat->nama_obat,  
-                'apotik_name' => $stok->apotik->nama_apotik,
-            ];
-        return response()->json($data);
+        // $data = [
+        //         'id' => $stok->id,
+        //         'stok' => $stok->stok,
+        //         'obat_name' => $stok->obat->nama_obat,  
+        //         'apotik_name' => $stok->apotik->nama_apotik,
+        //     ];
+        return new StockResource($stok);
     }
 
     /**

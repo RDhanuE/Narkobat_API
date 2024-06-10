@@ -7,6 +7,7 @@ use App\Http\Requests\StoreObatRequest;
 use App\Http\Requests\UpdateObatRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ObatResource;
 
 class ObatController extends Controller
 {
@@ -27,7 +28,7 @@ class ObatController extends Controller
         }
 
         // Return a JSON response with the drugs
-        return response()->json($obats);
+        return ObatResource::collection($obats);
     }
 
     /**
@@ -41,6 +42,7 @@ class ObatController extends Controller
     $obat->nama_obat = $request->nama_obat;
     $obat->jenis_obat = $request->jenis_obat;
     $obat->penyakit = $request->penyakit;
+    $obat->harga = $request->harga;
     $obat->save();
 
 
@@ -60,19 +62,22 @@ class ObatController extends Controller
             return response()->json(['message' => 'Obat not found'], 404);
         }
 
-        return response()->json($obat);
+        return new ObatResource($obat);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateObatRequest $request, Obat $obat)
+    public function update(UpdateObatRequest $request, $id)
     {
-        $validated = $request->validated();
+        $apotik = Obat::find($id);
+        $apotik->nama_obat = $request->nama_obat;
+        $apotik->jenis_obat = $request->jenis_obat;
+        $apotik->penyakit = $request->penyakit;
+        $apotik->harga = $request->harga;
+        $apotik->save();
 
-        $obat->update($validated);
-
-        return response()->json($obat);
+        return response()->json($apotik);
     }
 
     /**
