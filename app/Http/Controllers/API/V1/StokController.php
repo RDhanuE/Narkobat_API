@@ -45,18 +45,23 @@ class StokController extends Controller
      */
     public function store(StorestokRequest $request)
     {
-        $stok = new stok();
-        
         $obat = $request->nama_obat;
         $obat = Obat::where('nama_obat', 'like', "%" .$obat. "%")->first();
-        $stok -> id_obat = $obat -> id;
-
-        $apotik = $request->nama_apotik;
-        $apotik = Apotik::where('nama_apotik', 'like', '%' . $apotik . '%')->first();
-        $stok -> id_apotik = $apotik -> id;
-
-        $stok -> stok = $request->stok;
-        $stok -> save();
+        $apotik = $request->get('apotik');
+        
+        $stok = Stok::where('id_obat', $obat->id)->where('id_apotik', $apotik->id)->first();
+        if ($stok){
+            $stok->stok += $request->stok;
+            $stok->save();
+        }
+        else{
+            $stok = new stok();
+            $stok -> id_obat = $obat -> id;
+            $stok -> id_apotik = $apotik -> id;
+    
+            $stok -> stok = $request->stok;
+            $stok -> save();
+        }
 
         return response()->json($stok);
     }

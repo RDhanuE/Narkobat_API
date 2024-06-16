@@ -38,8 +38,8 @@ Route::controller(ApotikController::class)->group(function() {
 Route::controller(StokController::class)->group(function() {
     Route::get('/stock', 'index');
     Route::get('/stock/{id}', 'show');
-    Route::post('/stock', 'store'); // Need admin auth
     Route::middleware([AuthApotik::class])->group(function() {
+        Route::post('/stock', 'store'); // Need admin auth
         Route::post('/stock/add/{id}', 'add'); // Need admin or pharmacies auth
         Route::post('/stock/reduce/{id}', 'reduce'); // Need admin or pharmacies auth
         Route::delete('/stock/{id}', 'destroy'); // Need admin or pharmacies auth
