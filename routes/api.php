@@ -38,6 +38,7 @@ Route::controller(ApotikController::class)->group(function() {
 Route::controller(StokController::class)->group(function() {
     Route::get('/stock', 'index');
     Route::get('/stock/{id}', 'show');
+    Route::get('/stock/apotik/{id}', 'show_apotik');
     Route::middleware([AuthApotik::class])->group(function() {
         Route::post('/stock', 'store'); // Need admin auth
         Route::post('/stock/add/{id}', 'add'); // Need admin or pharmacies auth

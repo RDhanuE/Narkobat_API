@@ -82,6 +82,19 @@ class StokController extends Controller
         return new StockResource($stok);
     }
 
+    public function show_apotik($id)
+    {
+        $stok = Stok::with(['obat', 'apotik'])->where('id_apotik', $id)->get();
+
+        // $data = [
+        //         'id' => $stok->id,
+        //         'stok' => $stok->stok,
+        //         'obat_name' => $stok->obat->nama_obat,  
+        //         'apotik_name' => $stok->apotik->nama_apotik,
+        //     ];
+        return StockResource::collection($stok);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
